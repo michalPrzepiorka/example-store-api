@@ -1,5 +1,8 @@
-package com.example.store;
+package com.example.store.product.service;
 
+import com.example.store.product.model.ProductProvider;
+import com.example.store.product.model.Product;
+import com.example.store.product.repository.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
