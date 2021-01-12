@@ -1,5 +1,6 @@
-package com.example.store;
+package com.example.store.product.model;
 
+import com.example.store.discount.TypeOfClient;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -23,6 +24,6 @@ public class Product {
     private String id;
     private String name;
     private String content;
-    private String typeOfClient;
+    private TypeOfClient typeOfClient;
     private BigDecimal price;
 }

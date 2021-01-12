@@ -1,5 +1,7 @@
-package com.example.store;
+package com.example.store.product.controller;
 
+import com.example.store.product.model.Product;
+import com.example.store.product.repository.ProductRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
