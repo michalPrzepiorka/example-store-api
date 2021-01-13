@@ -3,7 +3,6 @@ package com.example.store.discount;
 import com.example.store.discount.amount.DiscountAmountValueService;
 import com.example.store.product.repository.ProductRepository;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +15,6 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-@NoArgsConstructor
 public class FetchProductService {
 
     private ProductRepository repository;
