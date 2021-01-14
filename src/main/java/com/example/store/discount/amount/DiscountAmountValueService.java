@@ -23,7 +23,7 @@ public class DiscountAmountValueService {
     public void saveDiscount() {
         repository.deleteAll();
         DiscountAmountValueProvider.getListOfDiscount()
-                .forEach(data -> repository.save(data));
+                .forEach(repository::save);
     }
 
     public BigDecimal getDiscountValue(TypeOfClient type) {

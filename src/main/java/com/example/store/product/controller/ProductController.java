@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Stream;
 
 /**
  * @author Y510p
@@ -49,8 +48,7 @@ public class ProductController {
     @GetMapping(
             value = "/discounted/{name}"
     )
-    public Stream<FetchProductResponse> showProductByName(@PathVariable String name) {
-        LinkedList<FetchProductResponse> fetchProductResponses = new LinkedList<>(service.getFetchedProductWithNewPrice());
-        return fetchProductResponses.stream().filter(e -> e.getName().equals(name));
+    public FetchProductResponse showProductByNameAfterDiscount(@PathVariable String name) {
+        return service.getFetchedProductWithNewPriceByName(name);
     }
 }

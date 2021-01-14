@@ -1,6 +1,7 @@
 package com.example.store.discount;
 
 import com.example.store.discount.amount.DiscountAmountValueService;
+import com.example.store.product.model.Product;
 import com.example.store.product.repository.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -32,5 +33,17 @@ public class FetchProductService {
                                 product.getPrice().min(product.getPrice().multiply(service.getDiscountValue(product.getTypeOfClient())))
                         )
                 )).collect(Collectors.toList());
+    }
+
+    public FetchProductResponse getFetchedProductWithNewPriceByName(String name) {
+        Product product = repository.findByName(name);
+        return new FetchProductResponse(
+                product.getId(),
+                product.getName(),
+                product.getContent(),
+                product.getTypeOfClient(),
+                product.getPrice().subtract(
+                        product.getPrice().min(product.getPrice().multiply(service.getDiscountValue(product.getTypeOfClient())))
+                ));
     }
 }
