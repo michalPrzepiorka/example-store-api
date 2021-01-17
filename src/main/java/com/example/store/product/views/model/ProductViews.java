@@ -1,11 +1,8 @@
-package com.example.store.discount.amount;
+package com.example.store.product.views.model;
 
-import com.example.store.discount.TypeOfClient;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.math.BigDecimal;
 
 /**
  * @author Y510p
@@ -17,11 +14,11 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Document(collection = "discount")
-public class DiscountAmountValue {
+@Document(collection = "views")
+public class ProductViews {
 
     @Id
     private String id;
-    TypeOfClient typeOfClient;
-    BigDecimal discount;
+    private int counter;
+    private String productId;
 }

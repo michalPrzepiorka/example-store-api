@@ -1,7 +1,6 @@
 package com.example.store.product.service;
 
 import com.example.store.product.model.ProductProvider;
-import com.example.store.product.model.Product;
 import com.example.store.product.repository.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -23,13 +22,6 @@ public class ProductService {
     public void saveProduct() {
         repository.deleteAll();
         ProductProvider.getListOfProduct()
-                .stream()
-                .map(product -> new Product(
-                        product.getId(),
-                        product.getName(),
-                        product.getContent(),
-                        product.getTypeOfClient(),
-                        product.getPrice())
-                ).forEach(repository::save);
+                .forEach(repository::save);
     }
 }

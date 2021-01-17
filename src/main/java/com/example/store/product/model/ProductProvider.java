@@ -1,6 +1,6 @@
 package com.example.store.product.model;
 
-import com.example.store.discount.TypeOfClient;
+import com.example.store.TypeOfClient;
 
 import java.math.BigDecimal;
 import java.util.LinkedList;
