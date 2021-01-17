@@ -1,6 +1,7 @@
-package com.example.store.discount.amount;
+package com.example.store.discount.amount.repository;
 
-import com.example.store.discount.TypeOfClient;
+import com.example.store.TypeOfClient;
+import com.example.store.discount.amount.model.DiscountAmountValue;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

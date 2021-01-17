@@ -1,4 +1,4 @@
-package com.example.store.product.model;
+package com.example.store.discount.amount.model;
 
 import com.example.store.TypeOfClient;
 import lombok.*;
@@ -17,13 +17,11 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Document(collection = "product")
-public class Product {
+@Document(collection = "discount")
+public class DiscountAmountValue {
 
     @Id
     private String id;
-    private String name;
-    private String content;
-    private TypeOfClient typeOfClient;
-    private BigDecimal price;
+    TypeOfClient typeOfClient;
+    BigDecimal discount;
 }

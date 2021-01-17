@@ -1,6 +1,9 @@
-package com.example.store.discount.amount;
+package com.example.store.discount.amount.service;
 
-import com.example.store.discount.TypeOfClient;
+import com.example.store.TypeOfClient;
+import com.example.store.discount.amount.model.DiscountAmountValue;
+import com.example.store.discount.amount.providers.DiscountAmountValueProvider;
+import com.example.store.discount.amount.repository.DiscountAmountValueRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;

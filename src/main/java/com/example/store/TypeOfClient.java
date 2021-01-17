@@ -1,4 +1,4 @@
-package com.example.store.discount;
+package com.example.store;
 
 /**
  * @author Y510p
