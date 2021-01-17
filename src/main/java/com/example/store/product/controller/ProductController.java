@@ -58,7 +58,7 @@ public class ProductController {
     }
 
     @GetMapping(
-            value = "/test/{productId}"
+            value = "/views/{productId}"
     )
     public FetchProductViewsResponse getViewOfProductByProductId(@PathVariable String productId) {
         return viewsService.getViewsOfProductByProductId(productId);
