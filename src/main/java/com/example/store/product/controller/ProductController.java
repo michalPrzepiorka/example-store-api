@@ -64,6 +64,6 @@ public class ProductController {
             value = "/views/{productId}"
     )
     public FetchProductViewsResponse getViewOfProductByProductId(@PathVariable String productId) {
-        return viewsService.getViewsOfProductByProductId(productId);
+        return new FetchProductViewsResponse(viewsService.getViews(productId));
     }
 }
