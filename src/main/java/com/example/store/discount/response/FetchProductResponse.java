@@ -2,8 +2,8 @@ package com.example.store.discount.response;
 
 import com.example.store.TypeOfClient;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Value;
 
 import java.math.BigDecimal;
 
@@ -12,7 +12,7 @@ import java.math.BigDecimal;
  * @project store
  **/
 
-@Value
+@Builder
 @Getter
 @AllArgsConstructor
 public class FetchProductResponse {

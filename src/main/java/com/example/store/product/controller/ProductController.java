@@ -1,5 +1,6 @@
 package com.example.store.product.controller;
 
+import com.example.store.discount.amount.service.DiscountAmountValueService;
 import com.example.store.discount.response.FetchProductResponse;
 import com.example.store.discount.service.FetchProductService;
 import com.example.store.product.model.Product;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -28,11 +28,13 @@ public class ProductController {
     private ProductRepository repository;
     private FetchProductService service;
     private ProductViewsService viewsService;
+    private DiscountAmountValueService discountService;
 
-    public ProductController(ProductRepository repository, FetchProductService service, ProductViewsService viewsService) {
+    public ProductController(ProductRepository repository, FetchProductService service, ProductViewsService viewsService, DiscountAmountValueService discountService) {
         this.repository = repository;
         this.service = service;
         this.viewsService = viewsService;
+        this.discountService = discountService;
     }
 
     @GetMapping(
@@ -45,16 +47,17 @@ public class ProductController {
     @GetMapping(
             value = "/discounted"
     )
-    public List<FetchProductResponse> showAllProductAfterDiscount() {
-        return new LinkedList<>(service.getFetchedProductWithNewPrice());
+    public List<FetchProductResponse> getDiscountedProducts() {
+        return ProductResponseMapper.mapToProductResponses(service.getProducts(), discountService);
     }
 
     @GetMapping(
             value = "/discounted/{name}"
     )
     public FetchProductResponse showProductByNameAfterDiscount(@PathVariable String name) {
-        viewsService.incrementRetrievesCounterOfProductWithId(service.getProductByName(name).getId());
-        return service.getFetchedProductWithNewPriceByName(name);
+        Product product = service.getProductByName(name);
+        viewsService.incrementRetrievesCounterOfProductWithId(product.getId());
+        return ProductResponseMapper.mapToProductResponseByName(discountService, product);
     }
 
     @GetMapping(
