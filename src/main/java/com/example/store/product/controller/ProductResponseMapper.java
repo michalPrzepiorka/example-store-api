@@ -1,10 +1,10 @@
 package com.example.store.product.controller;
 
+import com.example.store.discount.amount.model.Discount;
 import com.example.store.discount.amount.service.DiscountAmountValueService;
 import com.example.store.discount.response.FetchProductResponse;
 import com.example.store.product.model.Product;
 
-import java.math.RoundingMode;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,32 +25,26 @@ public class ProductResponseMapper {
     }
 
     public static FetchProductResponse mapToProductResponseByName(DiscountAmountValueService discountService, Product product) {
+        Discount discount = discountService.getDiscount(product.getTypeOfClient());
+        discount.applyTo(product);
+
         return FetchProductResponse.builder()
                 .name(product.getName())
                 .content(product.getContent())
                 .typeOfClient(product.getTypeOfClient())
-                .price(product.getPrice().subtract(
-                        product
-                                .getPrice()
-                                .min(product.getPrice()
-                                        .multiply(discountService.getDiscountValue(product.getTypeOfClient()))
-                                )
-                ).setScale(2, RoundingMode.DOWN))
+                .price(product.getPrice())
                 .build();
     }
 
     private static FetchProductResponse mapToProductResponse(Product product, DiscountAmountValueService discountService) {
+        Discount discount = discountService.getDiscount(product.getTypeOfClient());
+        discount.applyTo(product);
+
         return FetchProductResponse.builder()
                 .name(product.getName())
                 .content(product.getContent())
                 .typeOfClient(product.getTypeOfClient())
-                .price(product.getPrice().subtract(
-                        product
-                                .getPrice()
-                                .min(product.getPrice()
-                                        .multiply(discountService.getDiscountValue(product.getTypeOfClient()))
-                                )
-                ).setScale(2, RoundingMode.DOWN))
+                .price(product.getPrice())
                 .build();
     }
 }

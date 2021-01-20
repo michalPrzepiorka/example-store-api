@@ -1,7 +1,9 @@
 package com.example.store.discount.amount.service;
 
 import com.example.store.TypeOfClient;
+import com.example.store.discount.amount.model.Discount;
 import com.example.store.discount.amount.model.DiscountAmountValue;
+import com.example.store.discount.amount.model.PercentageDiscount;
 import com.example.store.discount.amount.providers.DiscountAmountValueProvider;
 import com.example.store.discount.amount.repository.DiscountAmountValueRepository;
 import lombok.AllArgsConstructor;
@@ -29,11 +31,11 @@ public class DiscountAmountValueService {
                 .forEach(repository::save);
     }
 
-    public BigDecimal getDiscountValue(TypeOfClient type) {
+    public Discount getDiscount(TypeOfClient type) {
         DiscountAmountValue discountEntity = repository.findByTypeOfClient(type);
         if (discountEntity == null) {
-            return BigDecimal.ZERO;
+            return new PercentageDiscount(BigDecimal.ZERO);
         }
-        return discountEntity.getDiscount();
+        return new PercentageDiscount(discountEntity.getDiscount());
     }
 }
