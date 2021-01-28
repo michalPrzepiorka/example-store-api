@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.4.1'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
+	id 'com.coditory.integration-test' version '1.1.11'
 }
 
 group = 'com.example'
@@ -21,9 +22,16 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.zalando:logbook-spring-boot-starter:2.4.1'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	testCompile 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:2.2.0'
+
+	testCompile 'io.rest-assured:rest-assured:4.2.0'
+	testCompile 'io.rest-assured:json-path:4.2.0'
+	testCompile 'io.rest-assured:xml-path:4.2.0'
 }
 
 test {

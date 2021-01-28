@@ -17,11 +17,12 @@ import org.springframework.stereotype.Service;
 public class ProductService {
 
     private final ProductRepository repository;
+    private ProductProvider provider;
 
     @EventListener(ApplicationReadyEvent.class)
     public void saveProduct() {
         repository.deleteAll();
-        ProductProvider.getListOfProduct()
+        provider.getListOfProduct()
                 .forEach(repository::save);
     }
 }
