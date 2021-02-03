@@ -23,11 +23,12 @@ import java.math.BigDecimal;
 public class DiscountAmountValueService {
 
     private DiscountAmountValueRepository repository;
+    private DiscountAmountValueProvider provider;
 
     @EventListener(ApplicationReadyEvent.class)
     public void saveDiscount() {
         repository.deleteAll();
-        DiscountAmountValueProvider.getListOfDiscount()
+        provider.getListOfDiscount()
                 .forEach(repository::save);
     }
 

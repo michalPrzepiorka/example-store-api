@@ -1,6 +1,8 @@
 package com.example.store.product.model;
 
 import com.example.store.TypeOfClient;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.LinkedList;
@@ -11,9 +13,11 @@ import java.util.List;
  * @project store
  **/
 
+@Component
 public class ProductProvider {
 
-    public static List<Product> getListOfProduct() {
+    @Profile(value = "!integration")
+    public List<Product> getListOfProduct() {
         List<Product> product = new LinkedList<>();
 
         product.add(new Product("", "Golarka", "Jakiś opis...", Enum.valueOf(TypeOfClient.class, "MALE"), BigDecimal.valueOf(199.99)));
