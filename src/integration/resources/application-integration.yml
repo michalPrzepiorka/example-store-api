@@ -1,0 +1,13 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+
+logbook:
+  format:
+    style: http
+
+logging:
+  level:
+    org.zalando.logbook: TRACE
